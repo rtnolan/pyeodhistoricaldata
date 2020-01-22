@@ -64,7 +64,7 @@ print(json.dumps(data, indent=2))
 ### Return Formats
 By default the response is in JSON, you can also change the format to be _csv_ by adding an extra parameter to the API call e.g.
 ```python
-data = api.get_eod('AAPL', 'US', '2019-01-15', '2019-01-18', fmt='csv')
+data = api.get_eod('AAPL', 'US', '2019-01-15', '2019-01-18','csv')
 print(data)
 
 """
@@ -75,3 +75,4 @@ Date,Open,High,Low,Close,Adjusted_close,Volume
 2019-01-18,157.5,157.88,155.9806,156.82,154.4986,33751023
 272
 """
+```
