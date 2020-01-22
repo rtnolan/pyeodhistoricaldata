@@ -23,7 +23,7 @@ setup(
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/development.html#single-sourcing-the-version
     # version='0.0.2',
-    version=0.0.1,
+    version='0.0.1',
 
     description='End Of Day Historical Data using Python',
     long_description=long_description,
