@@ -1,5 +1,5 @@
 # EOD Historical Data API Wrapper
-A wrapper around EOD historical data API at https://eodhistoricaldata.com.
+A wrapper around the EOD historical data API at https://eodhistoricaldata.com.
 
 # Installation 
 ```bash
@@ -8,7 +8,7 @@ pip install pyeodhistoricaldata
 # Usage
 An Environment Variable named `EOD_HISTORICAL_API_KEY` needs to be defined:
 ```bash
-export EOD_HISTORICAL_API_KEY="YOUR_API"
+export EOD_HISTORICAL_API_KEY="YOUR_API_KEY"
 ```
 ### Example
 ```python
