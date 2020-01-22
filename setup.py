@@ -2,22 +2,26 @@ from setuptools import setup, find_packages  # Always prefer setuptools over dis
 from os import path
 import io
 
-here = path.abspath(path.dirname(__file__))
 
-try:
-    import pypandoc
-    long_description = pypandoc.convert('README.md', 'rst')
-except(IOError, ImportError):
-    print("Can't import pypandoc - using README.md without converting to RST")
-    long_description = open('README.md').read()
+def is_requirement(line):
+    line = line.strip()
+    # Skip blank lines, comments, and editable installs
+    return not (
+        line == ""
+        or line.startswith("--")
+        or line.startswith("-r")
+        or line.startswith("#")
+        or line.startswith("-e")
+        or line.startswith("git+")
+    )
 
-install_requires = []
-with open("./requirements.txt") as f:
-    install_requires = f.read().splitlines()
-
+def get_requirements(path):
+    with open(path) as f:
+        lines = f.readlines()
+    return [l.strip() for l in lines if is_requirement(l)]
 
 setup(
-    name='pyeodhistorical',
+    name='pyeodhistoricaldata',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -26,10 +30,9 @@ setup(
     version='0.0.1',
 
     description='End Of Day Historical Data using Python',
-    long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/tnolan8/pyeodhistorical',
+    url='https://github.com/tnolan8/pyeodhistoricaldata',
 
     # Author details
     author='Tom Nolan',
@@ -48,10 +51,10 @@ setup(
     'Programming Language :: Python :: 3.4',
     'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: 3.6',
-  ]
+  ],
 
-    keywords='python trading data stock index',
-    install_requires=install_requires,
+    keywords=['python', 'trading', 'data', 'stock'],
+    install_requires=get_requirements("requirements.txt"),
     packages=find_packages(exclude=["contrib", "docs", "tests*"]),
     zip_safe=False,
 )
